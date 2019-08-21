@@ -26,7 +26,7 @@ namespace ReactNet.Models
         [DataType(DataType.Date)]
         public DateTime ReleaseDate { get; set; }
         public string Genre { get; set; }
-        //public string Note { get; set; }
+        public string Note { get; set; }
 
     }
 }
