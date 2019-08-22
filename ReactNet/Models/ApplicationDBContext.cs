@@ -16,6 +16,7 @@ namespace ReactNet.Models
 
         public DbSet<WeatherForecast> WeatherForecast { get; set; }
         public DbSet<Movie> Movie { get; set; }
+        public DbSet<Student> Student { get; set; }
     }
 }
 
