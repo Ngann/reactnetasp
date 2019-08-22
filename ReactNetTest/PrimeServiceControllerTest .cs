@@ -18,6 +18,17 @@ namespace ReactNet.Controllers
                 Assert.IsFalse(result, "1 should not be prime");
             }
 
+            [TestCase(-1)]
+            [TestCase(0)]
+            [TestCase(1)]
+            public void IsPrime_ValuesLessThan2_ReturnFalse(int value)
+            {
+                PrimeServiceController primeService = CreatePrimeService();
+                var result = primeService.IsPrime(value);
+
+                Assert.IsTrue(result, $"{value} should not be prime");
+            }
+
             [Test]
             public void When_MatrixIsLessThanThreeByThree_Then_IsMagicSquareFalse()
             {

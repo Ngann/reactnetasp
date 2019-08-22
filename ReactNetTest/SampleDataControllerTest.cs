@@ -8,8 +8,8 @@ namespace ReactNet.Controllers
         [Test]
         public void SampleDataTests()
         {
-            SampleDataController uut = new SampleDataController();
-            Assert.AreEqual("don't know yet", uut.WeatherForecasts());
+            SampleDataController sampleData = new SampleDataController();
+            Assert.AreEqual("don't know yet", sampleData.WeatherForecasts());
         }
     }
 }
