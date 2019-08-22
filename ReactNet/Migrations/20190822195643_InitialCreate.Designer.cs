@@ -10,7 +10,7 @@ using ReactNet.Models;
 namespace ReactNet.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20190822190419_InitialCreate")]
+    [Migration("20190822195643_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,6 +38,22 @@ namespace ReactNet.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Movie");
+                });
+
+            modelBuilder.Entity("ReactNet.Models.WeatherForecast", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("DateFormatted");
+
+                    b.Property<string>("Summary");
+
+                    b.Property<int>("TemperatureC");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("WeatherForecast");
                 });
 #pragma warning restore 612, 618
         }

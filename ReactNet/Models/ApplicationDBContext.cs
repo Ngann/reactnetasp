@@ -1,30 +1,17 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace ReactNet.Models
 {
     public class ApplicationDBContext : DbContext
     {
+        public DbSet<WeatherForecast> WeatherForecast { get; set; }
         public DbSet<Movie> Movie { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    => optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=PostgreSqlReactDb;Username=postgres;Password=123");
+    => optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=reactdbsql;Username=postgres;Password=123");
 
     }
 
-    public class Movie
-    {
-
-        public int Id { get; set; }
-        public string Title { get; set; }
-
-        [DataType(DataType.Date)]
-        public DateTime ReleaseDate { get; set; }
-        public string Genre { get; set; }
-        public string Note { get; set; }
-
-    }
 }
 
 //Intial Migration created with error:

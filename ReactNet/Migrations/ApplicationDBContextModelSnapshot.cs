@@ -37,6 +37,22 @@ namespace ReactNet.Migrations
 
                     b.ToTable("Movie");
                 });
+
+            modelBuilder.Entity("ReactNet.Models.WeatherForecast", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("DateFormatted");
+
+                    b.Property<string>("Summary");
+
+                    b.Property<int>("TemperatureC");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("WeatherForecast");
+                });
 #pragma warning restore 612, 618
         }
     }

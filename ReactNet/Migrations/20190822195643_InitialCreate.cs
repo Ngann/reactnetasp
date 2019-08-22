@@ -23,12 +23,30 @@ namespace ReactNet.Migrations
                 {
                     table.PrimaryKey("PK_Movie", x => x.Id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "WeatherForecast",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    DateFormatted = table.Column<string>(nullable: true),
+                    TemperatureC = table.Column<int>(nullable: false),
+                    Summary = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_WeatherForecast", x => x.Id);
+                });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "Movie");
+
+            migrationBuilder.DropTable(
+                name: "WeatherForecast");
         }
     }
 }
