@@ -10,7 +10,7 @@ using ReactNet.Models;
 namespace ReactNet.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20190822195643_InitialCreate")]
+    [Migration("20190822215412_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,6 +27,8 @@ namespace ReactNet.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Genre");
+
+                    b.Property<string>("Note");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18, 2)");

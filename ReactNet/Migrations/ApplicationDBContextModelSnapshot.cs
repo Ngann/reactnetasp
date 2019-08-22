@@ -26,6 +26,8 @@ namespace ReactNet.Migrations
 
                     b.Property<string>("Genre");
 
+                    b.Property<string>("Note");
+
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18, 2)");
 

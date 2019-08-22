@@ -4,14 +4,19 @@ namespace ReactNet.Models
 {
     public class ApplicationDBContext : DbContext
     {
-        public DbSet<WeatherForecast> WeatherForecast { get; set; }
-        public DbSet<Movie> Movie { get; set; }
+
+        public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options)
+           : base(options)
+        {
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    => optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=reactdbsql;Username=postgres;Password=123");
+        => optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=reactdb;Username=postgres;Password=123");
 
+
+        public DbSet<WeatherForecast> WeatherForecast { get; set; }
+        public DbSet<Movie> Movie { get; set; }
     }
-
 }
 
 //Intial Migration created with error:

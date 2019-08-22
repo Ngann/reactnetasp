@@ -24,8 +24,10 @@ namespace ReactNet
         {
 
             services.AddEntityFrameworkNpgsql()
-                .AddDbContext<ApplicationDBContext>()
-                .BuildServiceProvider();
+            .AddDbContext<ApplicationDBContext>(options =>
+                options.UseNpgsql(Configuration.GetConnectionString("ApplicationContext")))
+            .BuildServiceProvider();
+        
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
