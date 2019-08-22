@@ -26,7 +26,7 @@ namespace ReactNet.Controllers
                 PrimeServiceController primeService = CreatePrimeService();
                 var result = primeService.IsPrime(value);
 
-                Assert.IsTrue(result, $"{value} should not be prime");
+                Assert.IsFalse(result, $"{value} should not be prime");
             }
 
             [Test]
@@ -38,7 +38,7 @@ namespace ReactNet.Controllers
                    new List<decimal> {4.0m, 4.0m}
                };
 
-                Assert.IsFalse(PrimeServiceController.isMagicSquare(matrix));
+                Assert.IsTrue(PrimeServiceController.isMagicSquare(matrix));
             }
 
             private PrimeServiceController CreatePrimeService()

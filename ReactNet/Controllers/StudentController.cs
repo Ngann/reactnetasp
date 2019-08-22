@@ -8,13 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ReactNet.Controllers
 {
+    [Route("api/[controller]")]
     public class StudentController : Controller
     {
-        // GET: /<controller>/
-        public IActionResult Index()
-        {
-            return View();
-        }
 
         public class Student
         {

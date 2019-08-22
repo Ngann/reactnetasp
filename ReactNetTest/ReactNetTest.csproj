@@ -15,4 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ReactNet\ReactNet.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="StudentControllerTest.cs" />
+  </ItemGroup>
 </Project>
