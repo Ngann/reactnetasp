@@ -5,33 +5,33 @@ export class Movie extends Component {
 
   constructor (props) {
     super(props);
-    this.state = { forecasts: [], loading: true };
+    this.state = { movies: [], loading: true };
 
-    fetch('api/Movie/GetAll')
+    fetch('api/Movie/Index')
       .then(response => response.json())
       .then(data => {
-        this.setState({ forecasts: data, loading: false });
+        this.setState({ movies: data, loading: false });
       });
   }
 
-  static renderForecastsTable (forecasts) {
+  static rendermoviesTable (movies) {
     return (
       <table className='table table-striped'>
         <thead>
           <tr>
-            <th>Date</th>
-            <th>Temp. (C)</th>
-            <th>Temp. (F)</th>
-            <th>Summary</th>
+            <th>Title</th>
+            <th>Release Date</th>
+            <th>Genre</th>
+            <th>Price</th>
           </tr>
         </thead>
         <tbody>
-          {forecasts.map(forecast =>
-            <tr key={forecast.dateFormatted}>
-              <td>{forecast.dateFormatted}</td>
-              <td>{forecast.temperatureC}</td>
-              <td>{forecast.temperatureF}</td>
-              <td>{forecast.summary}</td>
+          {movies.map(movie =>
+            <tr key={movie.id}>
+              <td>{movie.title}</td>
+              <td>{movie.releaseDate}</td>
+              <td>{movie.genre}</td>
+              <td>{movie.price}</td>
             </tr>
           )}
         </tbody>
@@ -42,12 +42,12 @@ export class Movie extends Component {
   render () {
     let contents = this.state.loading
       ? <p><em>Loading...</em></p>
-      : Movie.renderForecastsTable(this.state.forecasts);
+      : Movie.rendermoviesTable(this.state.movies);
 
     return (
       <div>
-        <h1>Movie: Weather forecast</h1>
-        <p>This component demonstrates fetching data from the server.</p>
+        <h1>Movie List</h1>
+        <p>Should see a list of movies.</p>
         {contents}
       </div>
     );
