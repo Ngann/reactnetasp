@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using NUnit.Framework;
 using System.Collections.Generic;
 
@@ -12,10 +13,12 @@ namespace ReactNet.Controllers
             [Test]
             public void IsPrime_InputIs1_ReturnFalse()
             {
-                PrimeServiceController primeService = CreatePrimeService();
-                var result = primeService.IsPrime(1);
-
-                Assert.IsFalse(result, "1 should not be prime");
+                using (PrimeServiceController primeService = CreatePrimeService())
+                {
+                    var result = primeService.IsPrime(1);
+                    Assert.IsFalse(result, "1 should not be prime");
+                }
+                
             }
 
             [TestCase(-1)]
@@ -23,10 +26,12 @@ namespace ReactNet.Controllers
             [TestCase(1)]
             public void IsPrime_ValuesLessThan2_ReturnFalse(int value)
             {
-                PrimeServiceController primeService = CreatePrimeService();
-                var result = primeService.IsPrime(value);
-
-                Assert.IsFalse(result, $"{value} should not be prime");
+                using (PrimeServiceController primeService = CreatePrimeService())
+                {
+                    var result = primeService.IsPrime(value);
+                    Assert.IsFalse(result, $"{value} should not be prime");
+                }
+               
             }
 
             [Test]

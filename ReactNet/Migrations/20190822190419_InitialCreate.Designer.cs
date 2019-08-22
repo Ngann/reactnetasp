@@ -9,8 +9,8 @@ using ReactNet.Models;
 
 namespace ReactNet.Migrations
 {
-    [DbContext(typeof(MvcMovieContext))]
-    [Migration("20190821222455_InitialCreate")]
+    [DbContext(typeof(ApplicationDBContext))]
+    [Migration("20190822190419_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,6 +27,9 @@ namespace ReactNet.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Genre");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18, 2)");
 
                     b.Property<DateTime>("ReleaseDate");
 

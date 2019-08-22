@@ -16,7 +16,8 @@ namespace ReactNet.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     Title = table.Column<string>(nullable: true),
                     ReleaseDate = table.Column<DateTime>(nullable: false),
-                    Genre = table.Column<string>(nullable: true)
+                    Genre = table.Column<string>(nullable: true),
+                    Price = table.Column<decimal>(type: "decimal(18, 2)", nullable: false)
                 },
                 constraints: table =>
                 {

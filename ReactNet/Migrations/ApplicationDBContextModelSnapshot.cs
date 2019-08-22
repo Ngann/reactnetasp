@@ -8,8 +8,8 @@ using ReactNet.Models;
 
 namespace ReactNet.Migrations
 {
-    [DbContext(typeof(MvcMovieContext))]
-    partial class MvcMovieContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(ApplicationDBContext))]
+    partial class ApplicationDBContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -25,6 +25,9 @@ namespace ReactNet.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Genre");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18, 2)");
 
                     b.Property<DateTime>("ReleaseDate");
 
