@@ -27,5 +27,14 @@ namespace ReactNet.Controllers
             return _context.Movie.OrderBy(id => id).ToList();
         }
 
+        [HttpPost]
+        public IActionResult Create(Movie item)
+        {
+            _context.Movie.Add(item);
+            _context.SaveChanges();
+
+            return new OkResult();//CreatedAtRoute("GetTodo", new { id = item.Id }, item);
+        }
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿import React, { Component } from 'react';
+import { AddMovie } from './AddMovie';
 
 export class Movie extends Component {
   static displayName = Movie.name;
@@ -48,7 +49,8 @@ export class Movie extends Component {
       <div>
         <h1>Movie List</h1>
         <p>Should see a list of movies.</p>
-        {contents}
+            {contents}
+            <AddMovie/>
       </div>
     );
   }
