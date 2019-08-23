@@ -20,21 +20,33 @@ namespace ReactNet.Controllers
         }
 
         [HttpGet("[action]")]
-        // GET: Movies
+        // GET: api/Movie/Index
 
         public ActionResult<List<Movie>> Index()
         {
             return _context.Movie.OrderBy(id => id).ToList();
         }
 
+        // POST api/Movie/Create
         [HttpPost]
-        public IActionResult Create(Movie item)
+        public IActionResult Create(Movie info)
         {
-            _context.Movie.Add(item);
+            _context.Movie.Add(info);
             _context.SaveChanges();
 
-            return new OkResult();//CreatedAtRoute("GetTodo", new { id = item.Id }, item);
+            return StatusCode(201, info);
         }
 
-    }
+		[HttpGet("[action]")]
+		// GET: api/Movie/Find
+
+		public ActionResult<List<Movie>> Find(string term)
+		{
+			return _context.Movie
+				.Where(b => b.Title.Contains(term))
+				.OrderBy(b => b.Title)
+				.ToList();
+		}
+
+	}
 }
