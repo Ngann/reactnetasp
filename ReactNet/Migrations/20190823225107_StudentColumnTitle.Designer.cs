@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using ReactNet.Models;
+using ReactNet.Data;
 
 namespace ReactNet.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20190823192312_InitialSchema")]
-    partial class InitialSchema
+    [Migration("20190823225107_StudentColumnTitle")]
+    partial class StudentColumnTitle
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,40 +20,6 @@ namespace ReactNet.Migrations
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn)
                 .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
-
-            modelBuilder.Entity("ReactNet.Models.Article", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("AuthorId");
-
-                    b.Property<string>("Body");
-
-                    b.Property<string>("Title");
-
-                    b.Property<string>("Url");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AuthorId");
-
-                    b.ToTable("Articles");
-                });
-
-            modelBuilder.Entity("ReactNet.Models.Author", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("FirstName");
-
-                    b.Property<string>("LastName");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Authors");
-                });
 
             modelBuilder.Entity("ReactNet.Models.Movie", b =>
                 {
@@ -89,6 +55,10 @@ namespace ReactNet.Migrations
 
                     b.Property<string>("Phone");
 
+                    b.Property<string>("Title");
+
+                    b.Property<string>("Tutor");
+
                     b.HasKey("Id");
 
                     b.ToTable("Student");
@@ -108,14 +78,6 @@ namespace ReactNet.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("WeatherForecast");
-                });
-
-            modelBuilder.Entity("ReactNet.Models.Article", b =>
-                {
-                    b.HasOne("ReactNet.Models.Author", "Author")
-                        .WithMany("Articles")
-                        .HasForeignKey("AuthorId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

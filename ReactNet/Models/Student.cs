@@ -7,6 +7,8 @@
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Course { get; set; }
+        public string Title { get; set; }
+        public string Tutor { get; set; }
 
     }
 }

@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using ReactNet.Models;
 
-namespace ReactNet.Models
+namespace ReactNet.Data
 {
     public class ApplicationDBContext : DbContext
     {

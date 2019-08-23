@@ -1,12 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using ReactNet.Models;
+using ReactNet.Data;
 
 namespace ReactNet
 {
@@ -23,13 +22,19 @@ namespace ReactNet
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddEntityFrameworkNpgsql()
-                .AddDbContext<ApplicationDBContext>(options =>
-                options.UseNpgsql(Configuration.GetConnectionString("ApplicationContext")));
+            //services.AddEntityFrameworkNpgsql()
+            //    .AddDbContext<ApplicationDBContext>(options =>
+            //    options.UseNpgsql(Configuration.GetConnectionString("ApplicationContext")))
             //.BuildServiceProvider();
 
+            services.AddEntityFrameworkNpgsql().AddDbContext<ApplicationDBContext>(options =>
+            options.UseNpgsql(Configuration.GetConnectionString("ApplicationDBContext")));
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+        //var connectionString = Configuration.GetConnectionString("ApplicationDBContext");
+        //services.AddEntityFrameworkNpgsql().AddDbContext<ApplicationDBContext>(options => options.UseNpgsql(connectionString));
+
+
+        services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

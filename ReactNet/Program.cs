@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using ReactNet.Models;
+using ReactNet.Data;
 
 namespace ReactNet
 {
