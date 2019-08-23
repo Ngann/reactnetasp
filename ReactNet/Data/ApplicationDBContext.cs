@@ -12,8 +12,8 @@ namespace ReactNet.Data
         {
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=reactdb;Username=postgres;Password=123");
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //=> optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=reactdb;Username=postgres;Password=123");
 
 
         public DbSet<WeatherForecast> WeatherForecast { get; set; }

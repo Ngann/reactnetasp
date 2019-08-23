@@ -22,11 +22,15 @@ namespace ReactNet.Controllers
 
         [HttpGet("[action]")]
         // GET: api/Movie/Index
-
-        public ActionResult<List<Movie>> Index()
+        public async Task<ActionResult<List<Movie>>> Index()
         {
-            return _context.Movie.OrderBy(id => id).ToList();
+            return await _context.Movie.ToListAsync();
         }
+
+        //public ActionResult<List<Movie>> Index()
+        //{
+        //    return _context.Movie.OrderBy(id => id).ToList();
+        //}
 
         // POST api/Movie/Create
         [HttpPost]

@@ -22,13 +22,13 @@ namespace ReactNet
         public void ConfigureServices(IServiceCollection services)
         {
 
-            //services.AddEntityFrameworkNpgsql()
-            //    .AddDbContext<ApplicationDBContext>(options =>
-            //    options.UseNpgsql(Configuration.GetConnectionString("ApplicationContext")))
+            services.AddEntityFrameworkNpgsql()
+                .AddDbContext<ApplicationDBContext>(options =>
+                options.UseNpgsql(Configuration.GetConnectionString("ApplicationDBContext")));
             //.BuildServiceProvider();
 
-            services.AddEntityFrameworkNpgsql().AddDbContext<ApplicationDBContext>(options =>
-            options.UseNpgsql(Configuration.GetConnectionString("ApplicationDBContext")));
+            //services.AddEntityFrameworkNpgsql().AddDbContext<ApplicationDBContext>(options =>
+            //options.UseNpgsql(Configuration.GetConnectionString("ApplicationDBContext")));
 
         //var connectionString = Configuration.GetConnectionString("ApplicationDBContext");
         //services.AddEntityFrameworkNpgsql().AddDbContext<ApplicationDBContext>(options => options.UseNpgsql(connectionString));

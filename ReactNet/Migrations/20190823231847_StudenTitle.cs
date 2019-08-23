@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace ReactNet.Migrations
 {
-    public partial class InitialSchema : Migration
+    public partial class StudenTitle : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -35,7 +35,8 @@ namespace ReactNet.Migrations
                     Email = table.Column<string>(nullable: true),
                     Phone = table.Column<string>(nullable: true),
                     Course = table.Column<string>(nullable: true),
-                    Title = table.Column<string>(nullable: true)
+                    Tutor = table.Column<string>(nullable: true),
+                    Subject = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

@@ -10,8 +10,8 @@ using ReactNet.Data;
 namespace ReactNet.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20190823225107_StudentColumnTitle")]
-    partial class StudentColumnTitle
+    [Migration("20190823231404_IntialSchema")]
+    partial class IntialSchema
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -54,8 +54,6 @@ namespace ReactNet.Migrations
                     b.Property<string>("Name");
 
                     b.Property<string>("Phone");
-
-                    b.Property<string>("Title");
 
                     b.Property<string>("Tutor");
 
