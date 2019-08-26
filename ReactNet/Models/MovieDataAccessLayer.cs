@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using ReactNet.Data;
@@ -28,7 +29,6 @@ namespace ReactNet.Models
             _context.Movie.Add(info);
             _context.SaveChanges();
             return 1;
-           
         }
 
         //Get the details of a particular movie    
@@ -54,6 +54,7 @@ namespace ReactNet.Models
             _context.SaveChanges();
             return 1;
         }
+
     }
 }
 

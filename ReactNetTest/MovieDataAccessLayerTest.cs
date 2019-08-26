@@ -78,6 +78,38 @@ namespace ReactNet.Controllers
         }
 
         [Test]
+        public void UpdateMovieByIdInDatabase(string Title, DateTime ReleaseDate, string Genre, decimal Price)
+        {
+            var options = new DbContextOptionsBuilder<ApplicationDBContext>()
+                  .UseNpgsql("User ID=postgres;Password=123;Host=localhost;Port=5432;Database=reactdb;Pooling=true;")
+                  .Options;
+
+            using (var context = new ApplicationDBContext(options))
+            {
+                var service = new MovieDataAccessLayer(context);
+                var film = new Movie
+                {
+                    Title = "GhostBuster Three",
+                    ReleaseDate = DateTime.Parse("1989-2-12"),
+                    Genre = "Comedy Horror",
+                    Price = 7.99M
+                };
+                service.AddMovie(film);
+                service.UpdateMovie(Movie film = {
+                    Title = "GhostBuster Three",
+                    ReleaseDate = DateTime.Parse("1989-2-12"),
+                    Genre = "Comedy Horror",
+                    Price = 7.99M });
+            }
+
+            using (var context = new ApplicationDBContext(options))
+            {
+                var lastMovieCreated = context.Movie.Last().Id;
+                Assert.AreEqual("Ghostbusters Three", context.Movie.Find(lastMovieCreated).Title);
+            }
+        }
+
+        [Test]
         public void DeleteMovieInDatabase()
         {
             var options = new DbContextOptionsBuilder<ApplicationDBContext>()
@@ -98,4 +130,8 @@ namespace ReactNet.Controllers
             }
         }
     }
+}
+
+class var<T>
+{
 }
