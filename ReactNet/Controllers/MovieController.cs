@@ -21,16 +21,10 @@ namespace ReactNet.Controllers
         }
 
         [HttpGet("[action]")]
-        // GET: api/Movie/Index
-        public async Task<ActionResult<List<Movie>>> Index()
+        public IEnumerable<Movie> Index()
         {
-            return await _context.Movie.ToListAsync();
+            return _context.Movie.ToList();
         }
-
-        //public ActionResult<List<Movie>> Index()
-        //{
-        //    return _context.Movie.OrderBy(id => id).ToList();
-        //}
 
         // POST api/Movie/Create
         [HttpPost]
@@ -42,16 +36,37 @@ namespace ReactNet.Controllers
             return StatusCode(201, info);
         }
 
-		[HttpGet("[action]")]
-		// GET: api/Movie/Find
+        [HttpGet("[action]")]
+        // GET: api/Movie/Detail/{id}
 
-		public ActionResult<List<Movie>> Find(string term)
-		{
-			return _context.Movie
-				.Where(b => b.Title.Contains(term))
-				.OrderBy(b => b.Title)
-				.ToList();
-		}
+        public ActionResult<Movie> Detail(int id)
+        {
+            Movie movieInfo = _context.Movie.Find(id);
+            return StatusCode(200, $"Reteived deatils for movie {movieInfo}");
+        }
 
-	}
+        [HttpGet("[action]")]
+        // GET: api/Movie/Delete/{id}
+
+        public ActionResult<Movie> Delete(int id)
+        {
+            Movie info = _context.Movie.Find(id);
+            _context.Movie.Remove(info);
+            _context.SaveChanges();
+
+            return StatusCode(200, $"deleted {info}");
+        }
+
+        [HttpGet("[action]")]
+        // GET: api/Movie/Search
+
+        public ActionResult<List<Movie>> Search(string term)
+        {
+            return _context.Movie
+                .Where(b => b.Title.Contains(term))
+                .OrderBy(b => b.Title)
+                .ToList();
+        }
+
+    }
 }

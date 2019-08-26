@@ -8,13 +8,14 @@ namespace ReactNet.Models
 {
     public class MovieDataAccessLayer
     {
-        
+
         private readonly ApplicationDBContext _context;
 
         public MovieDataAccessLayer(ApplicationDBContext context)
         {
             _context = context;
         }
+
 
         public IEnumerable<Movie> GetAllMovies()
         {

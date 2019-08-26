@@ -44,7 +44,7 @@ namespace ReactNet.Controllers
         }
 
         [Test]
-        public void Find_searches_title()
+        public void Searches_title()
         {
             var options = new DbContextOptionsBuilder<ApplicationDBContext>()
                   .UseNpgsql("User ID=postgres;Password=123;Host=localhost;Port=5432;Database=reactdb;Pooling=true;")
@@ -80,7 +80,7 @@ namespace ReactNet.Controllers
             using (var context = new ApplicationDBContext(options))
             {
                 var service = new MovieController(context);
-                var result = service.Find("Comedy");
+                var result = service.Search("Comedy");
                 Assert.AreEqual(4, context.Movie.Count());
             }
         }
