@@ -9,7 +9,7 @@ using ReactNet.Models;
 
 namespace ReactNet.Controllers
 {
-    [Route("api/[controller]")]
+    //[Route("api/[controller]")]
     public class MovieController : Controller
     {
 
@@ -20,14 +20,17 @@ namespace ReactNet.Controllers
             _context = context;
         }
 
-        [HttpGet("[action]")]
+        //[HttpGet("[action]")]
+        [HttpGet]
+        [Route("api/Movie/Index")]
         public IEnumerable<Movie> Index()
         {
             return _context.Movie.ToList();
         }
 
         // POST api/Movie/Create
-        [HttpPost]
+        [HttpGet]
+        [Route("api/Movie/Create")]
         public IActionResult Create(Movie info)
         {
             _context.Movie.Add(info);
@@ -36,25 +39,27 @@ namespace ReactNet.Controllers
             return StatusCode(201, info);
         }
 
-        [HttpGet("[action]")]
+        [HttpGet]
+        [Route("api/Movie/Detail")]
         // GET: api/Movie/Detail/{id}
-
-        public ActionResult<Movie> Detail(int id)
+        ///api/Movie/Detail/?id=1
+        public Movie Detail(int id)
         {
             Movie movieInfo = _context.Movie.Find(id);
-            return StatusCode(200, $"Reteived deatils for movie {movieInfo}");
+            return movieInfo;
         }
 
         [HttpGet("[action]")]
         // GET: api/Movie/Delete/{id}
+        ///api/Movie/Delete/?id=1
 
-        public ActionResult<Movie> Delete(int id)
+        public Movie Delete(int id)
         {
             Movie info = _context.Movie.Find(id);
             _context.Movie.Remove(info);
             _context.SaveChanges();
 
-            return StatusCode(200, $"deleted {info}");
+            return info;
         }
 
         [HttpGet("[action]")]
