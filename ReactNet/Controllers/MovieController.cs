@@ -48,13 +48,14 @@ namespace ReactNet.Controllers
             return movieInfo;
         }
 
+        //www.learnentityframeworkcore.com/dbcontext/modifying-data
         [HttpPut]
         [Route("api/Movie/Edit")]
-        public int Edit(Movie movie)
+        public string Edit(int id, Movie movie)
         {
-            _context.Entry(movie).State = EntityState.Modified;
-            _context.SaveChanges();
-            return 1;
+            Movie movieId = _context.Movie.Find(id);
+            _context.Entry(movieId).CurrentValues.SetValues(movie);
+            return movie.Title;
 
         }
 
